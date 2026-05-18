@@ -175,9 +175,22 @@ export default function Home() {
           </div>
           <button
             onClick={() => setLanguage(language === "en" ? "zh" : "en")}
-            className="px-4 py-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors font-semibold"
+            className="px-3 py-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors font-semibold text-sm flex items-center gap-1"
+            title={language === "en" ? "切换到中文" : "Switch to English"}
           >
-            {t.nav.cn}
+            {language === "en" ? (
+              <>
+                <span>EN</span>
+                <span className="text-xs opacity-60">|</span>
+                <span className="opacity-60">中文</span>
+              </>
+            ) : (
+              <>
+                <span className="opacity-60">EN</span>
+                <span className="text-xs opacity-60">|</span>
+                <span>中文</span>
+              </>
+            )}
           </button>
         </div>
       </nav>
