@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310419663032166958/K2fXVoNC4ffPac84a64vSx",
+    "access_key_id": "ASIAZV3A2ECZHACD7NTO",
+    "secret_access_key": "fTzn4Qz7sPMBFHb7TY7F10dHhPana6uFg3UXWFZh",
+    "session_token": "IQoJb3JpZ2luX2VjEPL//////////wEaCXVzLWVhc3QtMSJHMEUCIQDVY6De4H/w6DOcR0QsFyjlUfqcZnwcVdgFVLwcB1VyQwIgZH5fzbigsAXbc3WCuGXFduU4kLCnxQwKSZQPB/GUVlQq/wMIu///////////ARAEGgw2NjUzODYwOTg4NjYiDJCNj2/HNRbE/pa8RCrTA9f1TXsaY3EGHEl2N9nnWzT7rPulyltfHQZtppz54giuiY3mJTx0FiVWOEYsuU1pKP+5NZTBHRtRLS0aH1VGdNVjXBN2MEIDZ+p5M/4rvpvEL2Brx2bNmIFe/KYW7WM9i+neUCYwHwmoxelIiGEqvsaRvurY/y/fne16eJGlfX1omjKrjBid64g9xb/HqWmR+PIfHVJT0Ah0rTsBGx03PgPZmPSQXtvSvaDYWLdxkB3Y9jfhXgoEb2uKWIGm0Sf0HjleyN1HZcRDLYPINh6IJpjt6HNp8nRLi9uxuAfZtBszIMFGygSW1G/lIgLWU/OzycQNN+KQcNAsT8fWdF8soqfvf4sVk9pmIuyOrO62w3pmHoGqxJAGC6es2YwQU8CQJ67ro/d7Nsllb+9mhwyaS4kRU+FZHZAf+p01YTeZNA4h9NjlmfJJq/5k6KxM2d+ZKHEEjZgvN4RZ20Piczdt+IjYx97nWdz/VH5ylXxVXWnlTPn9Qs43dHvg6vusEra12Z1E95aKsKEGabH019WkYCYy3pYv1A2TNAfE0wOh4lppL55YczrzoLEb11zUmA/h+6oRkT5+zlLTSI2OjOHhWJ9slDjpHD3igaSpZE1+7Xg1y4leMMbBq9AGOp0BZH6nVjfhHkAImnd10Xi39flAdFBC7ebLEgx1NvKT6TfWg8R2h0idOAFSpdSPUYkVbUeqlmVv5rDnOHOtVWHhhzeCQwCXzYV+9HT3/7iJsYDvfvftH7MxoFOD8oN56FyNURsJOquIM1rmBhh9w/9Jq+BSgzhIQo4EeNZtziaLYi24SXXkINXUn5YzISaJtKeiFjnqGaHvg+0C/FlERA==",
+    "expiration": "2026-05-18T21:49:58.000Z"
+  },
+  "name": "junqiang-electronics-website",
+  "path": "/home/ubuntu/junqiang-electronics-website",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "Tph5TLTSpv9485UmiXkw26",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "R7YNjZMtbymZsH2vWgSeGn",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Qiangwu Ma",
+    "OWNER_OPEN_ID": "ceDJAe98Yjn6AtpzK7UjGJ",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "27b06cdf-212e-40f8-b5df-244909b1c5cf",
+    "VITE_APP_ID": "K2fXVoNC4ffPac84a64vSx",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "深圳市骏强电子有限公司 - 官方网站",
+    "VITE_FRONTEND_FORGE_API_KEY": "5gFi6mxSLsNRXh5PGdidN5",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
