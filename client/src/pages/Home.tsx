@@ -159,10 +159,12 @@ export default function Home() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="container flex items-center justify-between py-4">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <Zap className="w-6 h-6 text-white" />
-            </div>
+          <div className="flex items-center gap-3">
+            <img 
+              src="/manus-storage/a8c0c037915bcad3b8d62ce846b9fef2_4515eb52.jpg" 
+              alt="Junqiang Electronics Logo" 
+              className="h-10 w-auto"
+            />
             <span className="font-bold text-primary text-lg">Junqiang</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
