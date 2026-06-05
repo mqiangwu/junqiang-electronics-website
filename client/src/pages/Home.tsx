@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
-import { ChevronRight, Globe, Package, Zap, Users, Shield, Truck, Headphones, Award, TrendingUp, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Globe, Package, Zap, Users, Shield, Truck, Headphones, Award, TrendingUp, CheckCircle2, Send, CheckCircle } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 /**
  * Design Philosophy: Premium Tech-Business Style
@@ -14,6 +15,16 @@ import { useState } from "react";
 
 export default function Home() {
   const [language, setLanguage] = useState<"en" | "zh">("en");
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    productCategory: "",
+    description: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const content = {
     en: {
@@ -111,14 +122,36 @@ export default function Home() {
         address: "Room 2302, 23rd Floor, Building B, Oriental Times Square, Intersection of Huaqiangbei Road and Zhenxing Road, Futian District, Shenzhen",
         phone: "+86-0755-83772829",
         fax: "+86-0755-83772680",
-        postal: "518031"
+        postal: "518031",
+        form: {
+          title: "Quick Inquiry Form",
+          subtitle: "Submit your procurement needs and we'll respond within 24 hours",
+          fields: {
+            name: "Your Name",
+            company: "Company Name",
+            email: "Email Address",
+            phone: "Phone Number",
+            productCategory: "Product Category",
+            description: "Procurement Details",
+            submit: "Submit Inquiry",
+            submitting: "Submitting...",
+            success: "Thank you! We'll contact you soon."
+          },
+          categories: [
+            "Integrated Circuits (IC)",
+            "Passive Components",
+            "Discrete Components",
+            "Electromechanical",
+            "Other"
+          ]
+        }
       },
       footer: {
         tagline: "Global Electronic Components One-Stop Service Expert",
         dedication: "Dedicated to Creating More Value for You"
       }
     },
-    zh: {
+      zh: {
       nav: { about: "关于我们", products: "产品中心", services: "核心服务", contact: "联系我们", cn: "English" },
       hero: {
         title: "全球电子元器件一站式服务专家",
@@ -213,7 +246,29 @@ export default function Home() {
         address: "深圳市福田区华强北路与振兴路交界处东方时代广场B座23楼2302室",
         phone: "+86-0755-83772829",
         fax: "+86-0755-83772680",
-        postal: "518031"
+        postal: "518031",
+        form: {
+          title: "快速询价表单",
+          subtitle: "提交您的采购需求，我们将在24小时内回复",
+          fields: {
+            name: "您的姓名",
+            company: "公司名称",
+            email: "电子邮箱",
+            phone: "联系电话",
+            productCategory: "产品类别",
+            description: "采购详情",
+            submit: "提交询价",
+            submitting: "提交中...",
+            success: "感谢您的询价！我们将尽快与您联系。"
+          },
+          categories: [
+            "集成电路 (IC)",
+            "无源器件",
+            "分立器件",
+            "机电元件",
+            "其他"
+          ]
+        }
       },
       footer: {
         tagline: "全球电子元器件一站式服务专家",
@@ -503,27 +558,160 @@ export default function Home() {
             <p className="text-xl text-foreground/70">{t.contact.subtitle}</p>
           </div>
           
-          <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-12">
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-bold text-primary mb-2">📍 {language === "en" ? "Address" : "地址"}</h3>
-                <p className="text-foreground/70">{t.contact.address}</p>
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Contact Information */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-8">{language === "en" ? "Contact Information" : "联系信息"}</h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-bold text-primary mb-2">📍 {language === "en" ? "Address" : "地址"}</h4>
+                  <p className="text-foreground/70">{t.contact.address}</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-bold text-primary mb-2">📞 {language === "en" ? "Phone" : "电话"}</h4>
+                  <p className="text-foreground/70">{t.contact.phone}</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-bold text-primary mb-2">📠 {language === "en" ? "Fax" : "传真"}</h4>
+                  <p className="text-foreground/70">{t.contact.fax}</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-bold text-primary mb-2">📮 {language === "en" ? "Postal Code" : "邮编"}</h4>
+                  <p className="text-foreground/70">{t.contact.postal}</p>
+                </div>
               </div>
+            </div>
+            
+            {/* Inquiry Form */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-2">{t.contact.form.title}</h3>
+              <p className="text-foreground/70 mb-8">{t.contact.form.subtitle}</p>
               
-              <div>
-                <h3 className="font-bold text-primary mb-2">📞 {language === "en" ? "Phone" : "电话"}</h3>
-                <p className="text-foreground/70">{t.contact.phone}</p>
-              </div>
-              
-              <div>
-                <h3 className="font-bold text-primary mb-2">📠 {language === "en" ? "Fax" : "传真"}</h3>
-                <p className="text-foreground/70">{t.contact.fax}</p>
-              </div>
-              
-              <div>
-                <h3 className="font-bold text-primary mb-2">📮 {language === "en" ? "Postal Code" : "邮编"}</h3>
-                <p className="text-foreground/70">{t.contact.postal}</p>
-              </div>
+              {submitSuccess ? (
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                  <CheckCircle className="w-16 h-16 text-accent mb-4" />
+                  <p className="text-lg font-semibold text-primary mb-2">{t.contact.form.fields.success}</p>
+                  <button
+                    onClick={() => {
+                      setSubmitSuccess(false);
+                      setFormData({ name: "", company: "", email: "", phone: "", productCategory: "", description: "" });
+                    }}
+                    className="text-accent hover:text-primary transition-colors mt-4"
+                  >
+                    {language === "en" ? "Submit Another Inquiry" : "提交新询价"}
+                  </button>
+                </div>
+              ) : (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setIsSubmitting(true);
+                    // Simulate form submission
+                    setTimeout(() => {
+                      setIsSubmitting(false);
+                      setSubmitSuccess(true);
+                      toast.success(t.contact.form.fields.success);
+                    }, 1500);
+                  }}
+                  className="space-y-4"
+                >
+                  <div>
+                    <label className="block text-sm font-semibold text-primary mb-2">{t.contact.form.fields.name}</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                      placeholder={t.contact.form.fields.name}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-primary mb-2">{t.contact.form.fields.company}</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                      placeholder={t.contact.form.fields.company}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-primary mb-2">{t.contact.form.fields.email}</label>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                      placeholder={t.contact.form.fields.email}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-primary mb-2">{t.contact.form.fields.phone}</label>
+                    <input
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                      placeholder={t.contact.form.fields.phone}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-primary mb-2">{t.contact.form.fields.productCategory}</label>
+                    <select
+                      required
+                      value={formData.productCategory}
+                      onChange={(e) => setFormData({ ...formData, productCategory: e.target.value })}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white"
+                    >
+                      <option value="">{language === "en" ? "Select a category" : "选择产品类别"}</option>
+                      {t.contact.form.categories.map((cat, idx) => (
+                        <option key={idx} value={cat}>{cat}</option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-semibold text-primary mb-2">{t.contact.form.fields.description}</label>
+                    <textarea
+                      required
+                      value={formData.description}
+                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                      rows={4}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent resize-none"
+                      placeholder={t.contact.form.fields.description}
+                    />
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full px-6 py-3 bg-accent text-primary font-semibold rounded-lg hover:bg-accent/90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                        {t.contact.form.fields.submitting}
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        {t.contact.form.fields.submit}
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
